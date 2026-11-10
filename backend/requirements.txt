@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+pandas
+requests
+python-dotenv
+python-jose[cryptography]
+bcrypt
+python-multipart
+pytest
+httpx
+fyers-apiv3

@@ -1,0 +1,24 @@
+services:
+  database:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: investing
+    ports:
+      - "5432:5432"
+    volumes:
+      - investing_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    env_file: ./backend/.env
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@database:5432/investing
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+
+volumes:
+  investing_data:
